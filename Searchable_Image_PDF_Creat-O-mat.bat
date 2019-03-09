@@ -15,14 +15,14 @@ REM ~ OS: Microsoft Windows 7 (with PowerShell); 8; 8.1
 REM ~ 
 REM ~ Preferences:
 REM ~ (leave no whitespace between the foldername and the '=' / do not use "):
-SET IMAGEMAGIC=C:\Users\Tim\Downloads\ImageMagick\magick.exe
+SET IMAGEMAGIC=C:\Program Files (x86)\ImageMagick\magick.exe
 SET TESSERACT=C:\Program Files (x86)\Tesseract-OCR\tesseract.exe
+REM ~ SRCLANG shall contains the abbreviations of the installed Tesseract languages [default: eng]. Multiple languages e.g.: deu+eng - see https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
+SET SRCLANG=eng
 REM ~ RESULTFOLDER is the folder where the searchable PDF will be stored (%CD% is the directory which contains this script) [default: %CD%\results]
-SET RESULTFOLDER=%CD%\durchsuchbare_PDF
+SET RESULTFOLDER=%CD%\searchable_PDF
 REM ~ TMPFOLDER is the folder where the extracted image files will be stored temporaly (the folder will be created and removed automatically during each run) [default: %CD%\temp]
 SET TMPFOLDER=%CD%\temp
-REM ~ SRCLANG shall contains the abbreviations of the installed Tesseract languages [default: eng]. Multiple languages e.g.: deu+eng - see https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
-SET SRCLANG=deu
 REM ~ ###################################################################################################################
 
 REM ~ clear the screen (/ the command line window)
