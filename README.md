@@ -1,4 +1,4 @@
-# Searchable-Image-PDF-Creat-O-mat
+# Searchable-Image-PDF-Creat-O-Mat
 This [batch script](https://en.wikipedia.org/wiki/Batch_file) creates a searchable PDF out of a PDF with one or more scanned pages by using the image handling software [ImageMagick](https://en.wikipedia.org/wiki/ImageMagick) and the [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition) software [Tesseract](https://en.wikipedia.org/wiki/Tesseract_(software)).
 It is possible to drag and drop one or multiple PDF files onto this batch file to start the process. But it is also possible to use the command line too.
 
