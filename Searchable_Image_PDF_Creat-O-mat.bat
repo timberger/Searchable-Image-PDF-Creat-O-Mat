@@ -2,7 +2,7 @@ ECHO OFF
 SETLOCAL
 REM ~ ###################################################################################################################
 REM ~ Searchable Image PDF Creat-O-mat 
-SET VERSION=1.0
+SET VERSION=1.0.1
 REM ~ This script creates a searchable PDF out of a PDF with one or more scanned pages. It is possible to drag and drop one or multiple PDF files onto this batch file to start the process.
 REM ~ But you can use the command line (<script name> [pdf filename #1] [pdf filename #2] ... [pdf filename #n]) too.
 REM ~ 
@@ -109,7 +109,7 @@ SET /a "AMOUNT_OF_FILES=%AMOUNT_OF_FILES% + 1"
 REM ~ `SHIFT` fills '%1' with the content of the second argument (`%2`), %2 with the content of third argument (`%3`) and so on
 SHIFT
 
-REM ~ IF the AMOUNT_OF_FILES dragged onto this .bat if smaller or equal to the total amount of file/arguments AND the next argument is not empty string THEN repeat the last step again. (Otherwise continue to the end of the script.)
+REM ~ IF the AMOUNT_OF_FILES dragged onto this .bat is smaller or equal to the total amount of file/arguments AND the next argument is not empty string THEN repeat the last step again. (Otherwise continue to the end of the script.)
 IF %AMOUNT_OF_FILES% LEQ %ARGCOUNT% IF NOT "%~1" == "" (
 	GOTO :LOOP
 )
