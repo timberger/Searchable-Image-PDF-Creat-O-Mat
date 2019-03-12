@@ -4,12 +4,14 @@ It is possible to drag and drop one or multiple PDF files onto this batch file t
 
 ## Prerequisites:
 * ImageMagick (7.0.8-27 and newer) https://imagemagick.org/
+* Ghostscript (9.xx) https://www.ghostscript.com/
 * Tesseract (4.0 and newer) https://github.com/tesseract-ocr/tesseract/wiki
 * Operating System: Microsoft Windows 7 (with PowerShell); 8; 8.1; 10 ? (untested)
 
 ## How to use it
 ### Installation
 * Install ImageMagick
+* Install Ghostscript
 * Install Tesseract
 * Put the file into the folder where you or your scanner stores the scanned PDF files
 * Open the batch file with a text editor e.g. [Notepad](https://en.wikipedia.org/wiki/Microsoft_Notepad) or [Scite](https://en.wikipedia.org/wiki/SciTE) and 
