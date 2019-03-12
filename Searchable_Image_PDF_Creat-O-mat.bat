@@ -2,7 +2,7 @@ ECHO OFF
 SETLOCAL
 REM ~ ###################################################################################################################
 REM ~ Searchable Image PDF Creat-O-mat 
-SET VERSION=1.0.1
+SET VERSION=1.0.2
 REM ~ This script creates a searchable PDF out of a PDF with one or more scanned pages. It is possible to drag and drop one or multiple PDF files onto this batch file to start the process.
 REM ~ But you can use the command line (<script name> [pdf filename #1] [pdf filename #2] ... [pdf filename #n]) too.
 REM ~ 
@@ -10,6 +10,7 @@ REM ~ Author: TB / License: MIT
 REM ~ 
 REM ~ Prerequisites:
 REM ~ ImageMagick (7.0.8-27 and newer) https://imagemagick.org/ | License: https://imagemagick.org/script/license.php
+REM ~ Ghostscript (9.x) https://www.ghostscript.com/
 REM ~ Tesseract (4.0 and newer) https://github.com/tesseract-ocr/tesseract/wiki | http://www.apache.org/licenses/LICENSE-2.0
 REM ~ OS: Microsoft Windows 7 (with PowerShell); 8; 8.1
 REM ~ 
@@ -27,6 +28,7 @@ REM ~ ##########################################################################
 
 REM ~ clear the screen (/ the command line window)
 cls
+ECHO OFF
 
 REM ~  command line window candy: blue background color / white font color (not in Windows 10)
 COLOR 1F
