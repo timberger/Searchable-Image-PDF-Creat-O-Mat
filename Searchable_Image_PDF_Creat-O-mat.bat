@@ -2,7 +2,7 @@ ECHO OFF
 SETLOCAL
 REM ~ ###################################################################################################################
 REM ~ Searchable Image PDF Creat-O-Mat 
-SET VERSION=1.1
+SET VERSION=1.1.1
 REM ~ This script creates a searchable PDF out of a PDF with one or more scanned pages. It is possible to drag and drop one or multiple PDF files onto this batch file to start the process.
 REM ~ But you can use the command line (<script name> [pdf filename #1] [pdf filename #2] ... [pdf filename #n]) too.
 REM ~ 
