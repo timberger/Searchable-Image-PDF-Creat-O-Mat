@@ -100,7 +100,7 @@ ECHO %~1
 
 REM ~ Resolution which Imagemagick and Tesseract shall use to handle the images (in DPI / default:300)
 SET RESDPI=300
-		
+
 REM ~ IF the file does not exist THEN skip it or ELSE do the whole process
 IF NOT EXIST "%~1" (
 	ECHO The file %~1 does not exist.
