@@ -28,7 +28,7 @@ SET RESULTFOLDER=%CD%\searchable_PDF
 REM ~ TMPFOLDER is the folder where the extracted image files will be stored temporaly (the folder will be created and removed automatically during each run) [default: %CD%\temp]
 SET TMPFOLDER=%CD%\temp
 REM ~ After Imagemagick and Tesseract have created the new PDF file it has usually a bigger file size. But it can be re-packed with Ghostscript which compresses the image file to a certain resolution e.g. screen (72dpi), ebook (150dpi), printer(300dpi), prepress(300dpi+colorpreserving)
-SET REPACKPROFILE=printer
+SET REPACKPROFILE=ebook
 REM ~ ###################################################################################################################
 
 REM ~ clear the screen (/ the command line window)
