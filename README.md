@@ -16,7 +16,7 @@ It is possible to drag and drop one or multiple PDF files onto this batch file t
 * Put the file into the folder where you or your scanner stores the scanned PDF files
 * Open the batch file with a text editor e.g. [Notepad](https://en.wikipedia.org/wiki/Microsoft_Notepad) or [Scite](https://en.wikipedia.org/wiki/SciTE) and 
     - fill in the correct (absolute) folder of the ImageMagick, Ghostscript and Tesseract executable files at the beginning of the file.
-    - edit the source language if necessary. You can set one or multiple languages Tesseract should look for in the scanned documents. (BTW: there different types of training data file for Tesseract. These seem to be a good choice https://github.com/tesseract-ocr/tessdata_best )
+    - edit the source language if necessary. You can set one or multiple languages Tesseract should look for in the scanned documents. (BTW: there are different types of training data files for Tesseract. These seem to be a good choice: https://github.com/tesseract-ocr/tessdata_best )
     - Save the changes
 ### Usage
 * Drag and drop one or multiple PDF files onto this batch file to start the process 
