@@ -6,7 +6,7 @@ It is possible to drag and drop one or multiple PDF files onto this batch file t
 * ImageMagick (7.0.8-27 and newer) https://imagemagick.org/
 * Ghostscript (9.xx) https://www.ghostscript.com/
 * Tesseract (4.0 and newer) https://github.com/tesseract-ocr/tesseract/wiki
-* Operating System: Microsoft Windows 7 (with PowerShell); 8; 8.1; 10 ? (untested)
+* Operating System: Microsoft Windows 7 (with PowerShell); 8; 8.1; 10
 
 ## How to use it
 ### Installation
