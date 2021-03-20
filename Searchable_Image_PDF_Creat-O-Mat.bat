@@ -59,7 +59,7 @@ IF NOT EXIST "%TESSERACT%" (
 	ECHO The Tesseract location seems to be wrong. Please check the preferences.
 	GOTO :SCRIPTEND
 )
-REM ~ Is the Tesseract langauge package abbrevation of the correct pattern? 
+REM ~ Is the Tesseract language package abbrevation of the correct pattern? 
 FOR /F "usebackq tokens=*" %%i IN (`PowerShell -noninteractive -NoProfile "&{ '%SRCLANG%' | Select-String -Pattern '^([a-z]{3}_?([a-z]{3})?)(\+([a-z]{3}_?([a-z]{3})?))*$' -Quiet}"`) DO SET RST=%%i
 IF /I NOT "%RST%" == "true" (
 	ECHO The language settings seem to be wrong. Please check the preferences.
@@ -150,7 +150,7 @@ SET /a "AMOUNT_OF_FILES=%AMOUNT_OF_FILES% + 1"
 REM ~ `SHIFT` fills '%1' with the content of the second argument (`%2`), %2 with the content of third argument (`%3`) and so on
 SHIFT
 
-REM ~ IF the AMOUNT_OF_FILES dragged onto this .bat is smaller or equal to the total amount of file/arguments AND the next argument is not empty string THEN repeat the last step again. (Otherwise continue to the end of the script.)
+REM ~ IF the AMOUNT_OF_FILES dragged onto this .bat is smaller or equal to the total amount of files/arguments AND the next argument is not empty string THEN repeat the last step again. (Otherwise continue to the end of the script.)
 IF %AMOUNT_OF_FILES% LEQ %ARGCOUNT% IF NOT "%~1" == "" (
 	GOTO :LOOP
 )
