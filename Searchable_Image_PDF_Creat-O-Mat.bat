@@ -2,7 +2,7 @@ ECHO OFF
 SETLOCAL
 REM ~ ###################################################################################################################
 REM ~ Searchable Image PDF Creat-O-Mat 
-SET VERSION=1.2
+SET VERSION=1.3
 REM ~ This script creates a searchable PDF out of a PDF with one or more scanned pages. It is possible to drag and drop one or multiple PDF files onto this batch file to start the process.
 REM ~ But you can use the command line (<script name> [pdf filename #1] [pdf filename #2] ... [pdf filename #n]) too.
 REM ~ 
@@ -12,15 +12,15 @@ REM ~ Prerequisites:
 REM ~ ImageMagick (7.0.8-27 and newer) https://imagemagick.org/ | License: https://imagemagick.org/script/license.php
 REM ~ Ghostscript (9.x) https://www.ghostscript.com/
 REM ~ Tesseract (4.0 and newer) https://github.com/tesseract-ocr/tesseract/wiki | http://www.apache.org/licenses/LICENSE-2.0
-REM ~ OS: Microsoft Windows 7 (with PowerShell); 8; 8.1
+REM ~ OS: Microsoft Windows 7 (with PowerShell); 8; 8.1; 10
 REM ~ 
 REM ~ Preferences:
 REM ~ (leave no whitespace between the foldername and the '=' / do not use "):
-SET IMAGEMAGIC=C:\Program Files\ImageMagick\magick.exe
-SET GHOSTSCRIPT=C:\Program Files\gs\gs9.23\bin\gswin64c.exe
-SET TESSERACT=C:\Program Files (x86)\Tesseract-OCR\tesseract.exe
+SET IMAGEMAGIC=C:\Program Files\ImageMagick-7.0.9-Q16\magick.exe
+SET GHOSTSCRIPT=C:\Program Files\gs\gs9.50\bin\gswin64c.exe
+SET TESSERACT=C:\Program Files\Tesseract-OCR\tesseract.exe
 REM ~ SRCLANG shall contain the abbreviations of the installed Tesseract languages which shall be searched for in the scanned files [default: eng]. Multiple languages e.g.: deu+eng - see https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
-SET SRCLANG=deu
+SET SRCLANG=deu+eng
 REM ~ The scanned page can be deskewed before it is processed with Tesseract or not [default: true / alternative: false]. It is recommended to deskew the sanned page because it increases the success rate of the OCR software. But it will take more time.
 SET DESKEW=true
 REM ~ RESULTFOLDER is the folder where the searchable PDF will be stored (%CD% is the directory which contains this script) [default: %CD%\results]
@@ -28,7 +28,7 @@ SET RESULTFOLDER=%CD%\searchable_PDF
 REM ~ TMPFOLDER is the folder where the extracted image files will be stored temporaly (the folder will be created and removed automatically during each run) [default: %CD%\temp]
 SET TMPFOLDER=%CD%\temp
 REM ~ After Imagemagick and Tesseract have created the new PDF file it has usually a bigger file size. But it can be re-packed with Ghostscript which compresses the image file to a certain resolution e.g. screen (72dpi), ebook (150dpi), printer(300dpi), prepress(300dpi+colorpreserving)
-SET REPACKPROFILE=printer
+SET REPACKPROFILE=ebook
 REM ~ ###################################################################################################################
 
 REM ~ clear the screen (/ the command line window)
@@ -59,7 +59,7 @@ IF NOT EXIST "%TESSERACT%" (
 	ECHO The Tesseract location seems to be wrong. Please check the preferences.
 	GOTO :SCRIPTEND
 )
-REM ~ Is the Tesseract language package abbrevation of the correct pattern? 
+REM ~ Is the Tesseract langauge package abbrevation of the correct pattern? 
 FOR /F "usebackq tokens=*" %%i IN (`PowerShell -noninteractive -NoProfile "&{ '%SRCLANG%' | Select-String -Pattern '^([a-z]{3}_?([a-z]{3})?)(\+([a-z]{3}_?([a-z]{3})?))*$' -Quiet}"`) DO SET RST=%%i
 IF /I NOT "%RST%" == "true" (
 	ECHO The language settings seem to be wrong. Please check the preferences.
@@ -96,11 +96,11 @@ IF "%~1" == "" (
 )
 :LOOP
 ECHO ### File %AMOUNT_OF_FILES% / %ARGCOUNT% ###
-ECHO %~1
+ECHO "%~1"
 
 REM ~ Resolution which Imagemagick and Tesseract shall use to handle the images (in DPI / default:300)
 SET RESDPI=300
-		
+
 REM ~ IF the file does not exist THEN skip it or ELSE do the whole process
 IF NOT EXIST "%~1" (
 	ECHO The file "%~1" does not exist.
@@ -150,7 +150,7 @@ SET /a "AMOUNT_OF_FILES=%AMOUNT_OF_FILES% + 1"
 REM ~ `SHIFT` fills '%1' with the content of the second argument (`%2`), %2 with the content of third argument (`%3`) and so on
 SHIFT
 
-REM ~ IF the AMOUNT_OF_FILES dragged onto this .bat is smaller or equal to the total amount of files/arguments AND the next argument is not empty string THEN repeat the last step again. (Otherwise continue to the end of the script.)
+REM ~ IF the AMOUNT_OF_FILES dragged onto this .bat is smaller or equal to the total amount of file/arguments AND the next argument is not empty string THEN repeat the last step again. (Otherwise continue to the end of the script.)
 IF %AMOUNT_OF_FILES% LEQ %ARGCOUNT% IF NOT "%~1" == "" (
 	GOTO :LOOP
 )
@@ -159,18 +159,18 @@ IF %AMOUNT_OF_FILES% LEQ %ARGCOUNT% IF NOT "%~1" == "" (
 REM ~ remove the temp folder
 RMDIR "%TMPFOLDER%"
 
-REM ~ setting the colors back to default
-COLOR 
-
 REM ~ determining the duration (with the help of https://stackoverflow.com/questions/42603119/arithmetic-operations-with-hhmmss-times-in-batch-file/42603985#42603985)
 SET EndPosition=%time:~0,8%
-SET /A "ss=(((1%EndPosition::=-100)*60+1%-100)-(((1%StartPosition::=-100)*60+1%-100)"
-SET /A "hh=ss/3600+100,ss%%=3600,mm=ss/60+100,ss=ss%%60+100"
+set /A "ss=(((1%EndPosition::=-100)*60+1%-100)-(((1%StartPosition::=-100)*60+1%-100)"
+set /A "hh=ss/3600+100,ss%%=3600,mm=ss/60+100,ss=ss%%60+100"
 ECHO Duration: %hh:~1%:%mm:~1%:%ss:~1%
 ECHO ### END ###
 
 :SCRIPTEND
 ENDLOCAL
+
+REM ~ setting the colors back to default
+COLOR
 
 REM ~ keep the command line window open
 CMD /k
